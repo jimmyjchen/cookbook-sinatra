@@ -1,0 +1,17 @@
+<h1>Create a Recipe</h1>
+<br>
+<form action="/recipes" method="post">
+    Recipe name: <input name="name" type="text" /> <br />
+    <br>
+    Prep time (minutes): <input max="240" min="0" name="prep_time" step="5" type="number" value="10" /> <br />
+    <br>
+    Difficulty: <select name="difficulty">
+        <option selected="selected" value="Very easy">Very easy</option>
+        <option value="Easy">Easy</option>
+        <option value="Moderate">Moderate</option>
+        <option value="Difficult">Difficult</option>
+    </select><br />
+    <br>
+    <textarea cols="50" name="description" rows="5">Description</textarea><br />
+    <input type="submit" value="Recipe" />
+</form>
