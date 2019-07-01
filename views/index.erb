@@ -1,12 +1,22 @@
 <h1>Your Recipes</h1>
 <br>
+<a href="/new" rel="nofollow"><h4>Create new recipe</h4></a>
+<form action="/import" method="post">
+<strong>Search online for a recipe with the following ingredient: </strong><input style="width: 15em" name="ingredient" type="text" />
+<input type="submit" value="Submit" />
+</form>
 <ul>
-  <% @cookbook_array.each do |recipe| %>
+  <% @cookbook_array.each_with_index do |recipe, index| %>
     <li>
+      <hr />
       <h5><strong><%= recipe.name %></strong> (<%= recipe.prep_time %>)</h5>
+      <strong>Difficulty:</strong> <%= recipe.difficulty %> <br />
       <strong>Description:</strong> <%= recipe.description %>
+      <form action="/delete" method="post">
+      <input name="action" type="submit" value="Delete" />
+      <textarea hidden cols="2" rows="1" name="index" type="text" /><%= "#{index}" %></textarea>
+
+      </form>
     </li>
   <% end %>
 </ul>
-
-<a href="/new" target="_blank" rel="nofollow">Create</a>

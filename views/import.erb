@@ -1,0 +1,18 @@
+<h4>Choose the recipe you want to import:</h4>
+<ul>
+  <% @recipes.each_with_index do |recipe, index| %>
+    <li>
+      <hr />
+      <h5><strong><%= recipe.name %></strong> (<%= recipe.prep_time %> min)</h5>
+      <strong>Description:</strong> <%= recipe.description %>
+      <form action="/download" method="post">
+      <input name="action" type="submit" value="Import" />
+      <textarea hidden cols="2" rows="1" name="index" type="text" /><%= "#{index}" %></textarea>
+      <textarea hidden cols="2" rows="1" name="name" type="text" /><%= "#{recipe.name}" %></textarea>
+      <textarea hidden cols="2" rows="1" name="description" type="text" /><%= "#{recipe.description}" %></textarea>
+      <textarea hidden cols="2" rows="1" name="prep_time" type="text" /><%= "#{recipe.prep_time}" %></textarea>
+      <textarea hidden cols="2" rows="1" name="difficulty" type="text" /><%= "#{recipe.difficulty}" %></textarea>
+      </form>
+    </li>
+  <% end %>
+</ul>
