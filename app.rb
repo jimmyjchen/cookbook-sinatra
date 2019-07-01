@@ -31,15 +31,6 @@ post '/import' do
   erb :import
 end
 
-post '/download' do
-  @csv_file = File.join(__dir__, 'recipes.csv')
-  @cookbook = Cookbook.new(@csv_file)
-  recipe = Recipe.new(params[:name], params[:description], params[:prep_time], false, params[:difficulty])
-  @cookbook.add_recipe(recipe)
-  @cookbook_array = @cookbook.all
-  redirect to('/')
-end
-
 post '/recipes' do
   @csv_file = File.join(__dir__, 'recipes.csv')
   @cookbook = Cookbook.new(@csv_file)
@@ -49,7 +40,7 @@ post '/recipes' do
   redirect to('/')
 end
 
-post '/delete' do
+post '/delete' do # this can just be a get by routing the delete request to delete/index
   @csv_file = File.join(__dir__, 'recipes.csv')
   @cookbook = Cookbook.new(@csv_file)
   @cookbook.remove_recipe(params[:index].to_i)
